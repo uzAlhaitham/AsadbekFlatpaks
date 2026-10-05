@@ -1,0 +1,10 @@
+name: Namida
+package: com.msob7y.namida
+version: 7.1.2
+version_code: 260919170
+release_tag: namida-v7.1.2
+description: |
+  Beautiful music & video player with YouTube support.
+upstream: https://github.com/namidaco/namida
+license: EULA
+author: namidaco

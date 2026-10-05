@@ -1,0 +1,10 @@
+# OSTree build artifacts
+repo/
+build-dir/
+.flatpak-builder/
+
+# GPG keys (maxfiy!)
+*.key
+*.b64
+private.key
+public.key

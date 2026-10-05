@@ -1,0 +1,7 @@
+[Flatpak Repo]
+Title=AsadbekFlatpaks
+Url=https://uzAlhaitham.github.io/AsadbekFlatpaks/repo
+Homepage=https://github.com/uzAlhaitham/AsadbekFlatpaks
+Comment=A personal Flatpak collection
+Description=A curated personal collection of Flatpak applications — hand-packaged, GPG-signed, and served from a single unified remote.
+GPGKey=PLACEHOLDER_GPG_KEY
