@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.uzalhaitham.RankingSystem</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Asadbek's Ranking System</name>
+  <summary>Genshin Impact profile viewer with Akasha ranking</summary>
+  <description>
+    <p>Genshin Impact akkauntlarini ko'rish va Akasha.cv reytingini ko'rsatuvchi dastur.</p>
+  </description>
+  <launchable type="desktop-id">io.github.uzalhaitham.RankingSystem.desktop</launchable>
+  <url type="homepage">https://github.com/uzAlhaitham/AsadbekFlatpaks</url>
+  <developer_name>Asadbek</developer_name>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.0" date="2026-10-06"/>
+  </releases>
+</component>

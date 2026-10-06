@@ -1,0 +1,53 @@
+app-id: io.github.uzalhaitham.RankingSystem
+runtime: org.kde.Platform
+runtime-version: '6.7'
+sdk: org.kde.Sdk
+base: io.qt.PySide.BaseApp
+base-version: '6.7'
+command: asadbeks-ranking-system
+
+finish-args:
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  - --filesystem=xdg-config/asadbeks-ranking-system:create
+  - --filesystem=xdg-cache/asadbeks-ranking-system:create
+
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
+
+modules:
+  - name: asadbeks-ranking-system
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/share/asadbeks-ranking-system
+      - cp -r main.py src assets /app/share/asadbeks-ranking-system/
+
+      - mkdir -p /app/bin
+      - |
+        cat > /app/bin/asadbeks-ranking-system << 'EOF'
+        #!/bin/sh
+        cd /app/share/asadbeks-ranking-system
+        exec python3 main.py "$@"
+        EOF
+      - chmod +x /app/bin/asadbeks-ranking-system
+
+      - install -Dm644 flatpak/io.github.uzalhaitham.RankingSystem.desktop
+          /app/share/applications/io.github.uzalhaitham.RankingSystem.desktop
+
+      - |
+        for size in 16 24 32 48 64 128 256 512; do
+            install -Dm644 assets/icon_${size}.png \
+                /app/share/icons/hicolor/${size}x${size}/apps/io.github.uzalhaitham.RankingSystem.png
+        done
+      - install -Dm644 assets/icon.svg
+          /app/share/icons/hicolor/scalable/apps/io.github.uzalhaitham.RankingSystem.svg
+
+      - install -Dm644 flatpak/io.github.uzalhaitham.RankingSystem.metainfo.xml
+          /app/share/metainfo/io.github.uzalhaitham.RankingSystem.metainfo.xml
+
+    sources:
+      - type: dir
+        path: ..

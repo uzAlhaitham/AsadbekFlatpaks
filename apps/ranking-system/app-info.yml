@@ -1,0 +1,11 @@
+name: Asadbek's Ranking System
+package: io.github.uzalhaitham.RankingSystem
+version: 0.1.0
+version_code: 2026100601
+release_tag: ranking-system-v0.1.0
+description: |
+  Genshin Impact profile viewer with Akasha.cv ranking.
+  Shows character builds, artifacts, weapons, RV/CV values.
+upstream: https://github.com/uzAlhaitham/AsadbekFlatpaks
+license: MIT
+author: Asadbek
