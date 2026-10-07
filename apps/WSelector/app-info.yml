@@ -1,0 +1,8 @@
+name: WSelector
+package: io.github.Cookiiieee.WSelector
+version: 0.2.1
+description: |
+  Wallpaper Selector Manager.
+upstream: https://github.com/Cookiiieee/WSelector
+license: GPL-3.0
+author: Phillip Cook
