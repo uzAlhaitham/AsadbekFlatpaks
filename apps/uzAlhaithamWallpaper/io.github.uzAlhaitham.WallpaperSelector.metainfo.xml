@@ -60,6 +60,17 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.2.0" date="2025-10-08">
+      <description>
+        <p>Polish and stability update:</p>
+        <ul>
+          <li>Improved config save/load stability</li>
+          <li>Added bilingual changelog (EN/UZ) to app metadata</li>
+          <li>Added developer info and bug tracker URL</li>
+          <li>Updated AppStream metadata for GNOME Software / KDE Discover</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2025-10-08">
       <description>
         <p>New features / Yangi xususiyatlar:</p>
