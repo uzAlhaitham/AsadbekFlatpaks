@@ -18,13 +18,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - name: Install flatpak and ostree
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak ostree gnupg
+          sudo apt-get install -y flatpak ostree gnupg curl
+
+      - name: Download bundles from GitHub Releases
+        run: |
+          mkdir -p bundles
+          BASE="https://github.com/${{ github.repository }}/releases/download/bundles-v1"
+          for f in designcraft-0.4.0-linux-x86_64 effectcraft-0.6.0-linux-x86_64 filmcraft-0.4.0-linux-x86_64 io.github.uzalhaitham.RankingSystem lightcraft-0.4.0-linux-x86_64 Namida-x86_64 pdfcraft-0.4.0-linux-x86_64 photocraft-0.5.0-linux-x86_64 vectorcraft-0.6.0-linux-x86_64 WallpaperSelector-x86_64 WSelector-x86_64; do
+            echo "Downloading: $f.flatpak"
+            curl -L -o "bundles/$f.flatpak" "$BASE/$f.flatpak"
+          done
+          echo "Downloaded bundles:"
+          ls -la bundles/
 
       - name: Import GPG key and preset passphrase
         env:
@@ -67,7 +76,7 @@ jobs:
 
           shopt -s nullglob globstar
           FOUND=0
-          for BUNDLE in apps/**/bundle/*.flatpak; do
+          for BUNDLE in bundles/*.flatpak; do
             echo "Importing: $BUNDLE"
             flatpak build-import-bundle \
                 --gpg-sign="$GPG_FINGERPRINT" \
