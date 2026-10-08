@@ -2,15 +2,8 @@
 
 Shaxsiy Flatpak repozitoriyasi.
 
-## Repozitoriyani qo'shish
+## Ilovalar
 
-<<<<<<< HEAD
-    flatpak remote-add --if-not-exists --user asadbek https://uzAlhaitham.github.io/AsadbekFlatpaks/AsadbekFlatpaks.flatpakrepo
-
-## Dasturni o'rnatish
-
-    flatpak install --user asadbek ai.storyteller.photocraft
-=======
 | App | Package | Platform | Description |
 |-----|---------|----------|-------------|
 | **Namida** | `com.msob7y.namida` | Linux | Beautiful music & video player with YouTube support |
@@ -18,17 +11,17 @@ Shaxsiy Flatpak repozitoriyasi.
 | **Ranking System** | `io.github.uzalhaitham.RankingSystem` | Linux | Genshin Impact profile viewer with Akasha.cv ranking |
 | **Wallpaper Selector** | `io.github.uzAlhaitham.WallpaperSelector` | Linux + Windows | Browse and set wallpapers from Wallhaven.cc |
 
-## Linux — Adding the Repository
+## Linux — Repozitoriyani qo'shish
 
     flatpak remote-add --if-not-exists asadbekflatpaks https://uzAlhaitham.github.io/AsadbekFlatpaks/asadbekflatpaks.flatpakrepo
 
-Then install any app:
+Keyin istalgan ilovani o'rnating:
 
     flatpak install asadbekflatpaks io.github.uzAlhaitham.WallpaperSelector
 
-## Windows — Direct Download
+## Windows — To'g'ridan-to'g'ri yuklab olish
 
-Download the latest `.exe` from the [Releases](https://github.com/uzAlhaitham/AsadbekFlatpaks/releases) page. No installation required — just run it.
+Eng so'nggi `.exe` faylini [Releases](https://github.com/uzAlhaitham/AsadbekFlatpaks/releases) sahifasidan yuklab oling. O'rnatish shart emas — shunchaki ishga tushiring.
 
 ## Credits
 
@@ -45,4 +38,3 @@ The configuration, scripts, and metadata in **this repository** are licensed und
 The applications themselves are licensed under their own respective licenses.
 
 This repository is **not affiliated** with the original app developers.
->>>>>>> 19e0d25aceda3a676bf5f94499650123bfc0e053
