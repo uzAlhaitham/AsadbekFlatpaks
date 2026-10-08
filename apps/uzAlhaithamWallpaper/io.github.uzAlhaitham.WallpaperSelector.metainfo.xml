@@ -1,18 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.uzAlhaitham.WallpaperSelector</id>
-  <name>uzAlhaitham's Wallpaper Selector</name>
-  <summary>Browse and set wallpapers from Wallhaven</summary>
+
+  <name>Wallpaper Selector</name>
+  <name xml:lang="uz">Fon rasmi tanlagich</name>
+  <name xml:lang="ru">Выбор обоев</name>
+
+  <summary>Browse and set wallpapers from Wallhaven.cc</summary>
+  <summary xml:lang="uz">Wallhaven.cc'dan fon rasmlarini ko'rish va o'rnatish</summary>
+  <summary xml:lang="ru">Просмотр и установка обоев с Wallhaven.cc</summary>
+
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
+
   <description>
-    <p>A PyQt5 wallpaper browser that fetches images from Wallhaven.cc
-       and sets them as your desktop background.</p>
+    <p>
+      A PyQt5 wallpaper browser that fetches images from Wallhaven.cc
+      and sets them as your desktop background.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Search wallpapers on Wallhaven.cc</li>
+      <li>Filter by category (General / Anime / People)</li>
+      <li>SFW / NSFW filter (with API key)</li>
+      <li>Download manager with pause / resume</li>
+      <li>Set wallpaper on KDE, GNOME, XFCE, Sway</li>
+      <li>Multi-language UI</li>
+      <li>Built-in image viewer with zoom, pan, and scrollbars</li>
+      <li>Smooth animations throughout the UI</li>
+    </ul>
   </description>
+
+  <description xml:lang="uz">
+    <p>
+      Wallhaven.cc saytidan rasm yuklab, ish stoliga fon rasmi sifatida
+      o'rnatuvchi PyQt5 dasturi.
+    </p>
+    <p>Xususiyatlar:</p>
+    <ul>
+      <li>Wallhaven.cc saytidan fon rasmlarini qidirish</li>
+      <li>Kategoriya bo'yicha filtrlash (Umumiy / Anime / Odamlar)</li>
+      <li>SFW / NSFW filtri (API kalit bilan)</li>
+      <li>Yuklab olish menejeri (pauza / davom ettirish)</li>
+      <li>KDE, GNOME, XFCE, Sway da fon rasmi o'rnatish</li>
+      <li>Ko'p tilli interfeys</li>
+      <li>Ichki rasm ko'ruvchi: zoom, pan, scrollbar</li>
+      <li>Butun interfeys bo'ylab silliq animatsiyalar</li>
+    </ul>
+  </description>
+
   <launchable type="desktop-id">io.github.uzAlhaitham.WallpaperSelector.desktop</launchable>
-  <url type="homepage">https://github.com/uzAlhaitham</url>
-  <releases>
-    <release version="1.0.0" date="2025-01-01"/>
-  </releases>
+  <url type="homepage">https://github.com/uzAlhaitham/AsadbekFlatpaks</url>
+  <url type="bugtracker">https://github.com/uzAlhaitham/AsadbekFlatpaks/issues</url>
+
+  <developer id="io.github.uzalhaitham">
+    <name>uzAlhaitham</name>
+  </developer>
+
   <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="1.1.0" date="2025-10-08">
+      <description>
+        <p>New features / Yangi xususiyatlar:</p>
+        <ul>
+          <li>Smooth animations: hover zoom, fade-in, click ripple</li>
+          <li>Image viewer with wheel zoom and left-click pan</li>
+          <li>Fit and 100% buttons for image sizing</li>
+          <li>Horizontal and vertical scrollbars in image viewer</li>
+          <li>Loading spinner while fetching images</li>
+          <li>Pagination buttons press animation</li>
+          <li>Smooth scroll-to-top on refresh</li>
+        </ul>
+        <p>Bug fixes / Xatolar tuzatildi:</p>
+        <ul>
+          <li>Config not saving on fresh install (Windows + Linux)</li>
+          <li>Config now saves to correct Windows path (LOCALAPPDATA)</li>
+          <li>Fullscreen mode no longer breaks when switching images</li>
+          <li>Keyboard arrows work reliably in image viewer</li>
+          <li>Removed 6-column grid option (caused UI glitches)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.0" date="2025-10-07">
+      <description>
+        <p>First public release:</p>
+        <ul>
+          <li>Wallhaven.cc search</li>
+          <li>Download manager</li>
+          <li>Set wallpaper on KDE / GNOME / XFCE / Sway</li>
+          <li>Multi-language UI</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
 </component>
