@@ -1,8 +1,8 @@
 name: uzAlhaitham's Wallpaper Selector
 package: io.github.uzAlhaitham.WallpaperSelector
-version: 1.2.1
-version_code: 2026100804
-release_tag: wallpaper-selector-v1.2.1
+version: 1.2.2
+version_code: 2026100805
+release_tag: wallpaper-selector-v1.2.2
 description: |
   Browse and set wallpapers from Wallhaven.cc.
   PyQt5 based wallpaper selector with multi-language UI,

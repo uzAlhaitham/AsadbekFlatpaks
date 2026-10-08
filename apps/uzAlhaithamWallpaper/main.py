@@ -142,7 +142,23 @@ class ZoomView(QGraphicsView):
 
     def mousePressEvent(self, e):
         parent = self._parent_iv()
-        if parent is None or e.button() != Qt.LeftButton:
+        if parent is None:
+            e.ignore()
+            return
+
+        # O'rta tugma yoki Alt/Control -> oyna sudrash (har qanday joyda)
+        is_window_drag_key = (
+            e.button() == Qt.MiddleButton or
+            (e.button() == Qt.LeftButton and
+             (e.modifiers() & (Qt.ControlModifier | Qt.AltModifier)))
+        )
+        if is_window_drag_key:
+            parent._drag_pos = e.globalPos() - parent.frameGeometry().topLeft()
+            self.setCursor(Qt.ClosedHandCursor)
+            e.accept()
+            return
+
+        if e.button() != Qt.LeftButton:
             e.ignore()
             return
 
@@ -151,13 +167,6 @@ class ZoomView(QGraphicsView):
         if edge:
             parent._resize_edge = edge
             parent._resize_start = (e.globalPos(), parent.geometry())
-            e.accept()
-            return
-
-        # Ctrl + chap tugma -> oyna sudrash (hamma joyda)
-        if e.modifiers() & Qt.ControlModifier:
-            parent._drag_pos = e.globalPos() - parent.frameGeometry().topLeft()
-            self.setCursor(Qt.ClosedHandCursor)
             e.accept()
             return
 

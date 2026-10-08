@@ -1277,13 +1277,23 @@ class ImageViewer(QDialog):
         # Frameless
         self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint)
 
-        # 90% ekran
-        screen = QApplication.primaryScreen().availableGeometry()
-        w = int(screen.width() * 0.9)
-        h = int(screen.height() * 0.9)
+        # 90% — main window (parent) dan olamiz
+        if parent is not None and parent.width() > 100:
+            w = int(parent.width() * 0.9)
+            h = int(parent.height() * 0.9)
+            # Parent markaziga joylashtiramiz
+            pg = parent.frameGeometry()
+            x = pg.x() + (pg.width() - w) // 2
+            y = pg.y() + (pg.height() - h) // 2
+        else:
+            # Fallback: ekran markazi
+            screen = QApplication.primaryScreen().availableGeometry()
+            w = int(screen.width() * 0.9)
+            h = int(screen.height() * 0.9)
+            x = screen.x() + (screen.width() - w) // 2
+            y = screen.y() + (screen.height() - h) // 2
         self.resize(w, h)
-        self.move(screen.x() + (screen.width() - w) // 2,
-                  screen.y() + (screen.height() - h) // 2)
+        self.move(x, y)
 
         self.setStyleSheet("background:#0d0d0d;")
 
