@@ -5,6 +5,9 @@ on:
     branches: [ main ]
     paths:
       - 'apps/uzAlhaithamWallpaper/main.py'
+      - 'apps/uzAlhaithamWallpaper/main_base.py'
+      - 'apps/uzAlhaithamWallpaper/main_windows.py'
+      - 'apps/uzAlhaithamWallpaper/main_base_windows.py'
       - 'apps/uzAlhaithamWallpaper/icons/**'
       - '.github/workflows/build-windows.yml'
   workflow_dispatch:
