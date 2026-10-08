@@ -412,36 +412,11 @@ class TransDict:
 T = TransDict(TR["en"])
 
 
-# ==================== Platform-specific paths ====================
-if sys.platform == "win32":
-    # Windows: %LOCALAPPDATA%\uzAlhaithamWallpaper
-    _APP_DATA = Path(os.environ.get("LOCALAPPDATA",
-                                    Path.home() / "AppData" / "Local"))
-    _CONFIG_DIR = _APP_DATA / "uzAlhaithamWallpaper"
-    _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
-    CONFIG_FILE = _CONFIG_DIR / "config.json"
-    CURRENT_WALLPAPER_DIR = _CONFIG_DIR / "cache"
-    DEFAULT_DL_FOLDER = Path.home() / "Pictures" / "Wallpapers"
-elif sys.platform == "darwin":
-    # macOS: ~/Library/Application Support
-    _CONFIG_DIR = Path.home() / "Library" / "Application Support" / "uzAlhaithamWallpaper"
-    _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
-    CONFIG_FILE = _CONFIG_DIR / "config.json"
-    CURRENT_WALLPAPER_DIR = _CONFIG_DIR / "cache"
-    DEFAULT_DL_FOLDER = Path.home() / "Pictures" / "Wallpapers"
-else:
-    # Linux (host yoki Flatpak)
-    CONFIG_FILE = Path.home() / ".uzalhaitham_wallpaper.json"
-    CURRENT_WALLPAPER_DIR = Path.home() / ".cache" / "uzAlhaithamWallpaper"
-    DEFAULT_DL_FOLDER = Path.home() / "Wallpapers"
-
+CONFIG_FILE = Path.home() / ".uzalhaitham_wallpaper.json"
+CURRENT_WALLPAPER_DIR = Path.home() / ".cache" / "uzAlhaithamWallpaper"
 CURRENT_WALLPAPER_FILE = CURRENT_WALLPAPER_DIR / "current_wallpaper"
-CURRENT_WALLPAPER_DIR.mkdir(parents=True, exist_ok=True)
-# Windows fon rasmi webp'ni qo'llamaydi
-if sys.platform == "win32":
-    SUPPORTED_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".gif"}
-else:
-    SUPPORTED_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp"}
+DEFAULT_DL_FOLDER = Path.home() / "Wallpapers"
+SUPPORTED_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp"}
 WALLHAVEN_API = "https://wallhaven.cc/api/v1/search"
 THUMB_PX = 320
 THUMB_WORKERS = 8
@@ -2811,6 +2786,7 @@ class MainWindow(QMainWindow):
         self.total_pages = 1
         self.current_wallpaper_id = None
         self._dl_expanded = False
+        self._cfg_lang = "auto"  # default
 
         self._resize_timer = QTimer(self)
         self._resize_timer.setSingleShot(True)
