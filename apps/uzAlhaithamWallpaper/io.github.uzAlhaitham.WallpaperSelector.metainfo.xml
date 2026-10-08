@@ -60,6 +60,32 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.2.4" date="2025-10-08">
+      <description>
+        <p>Window resize fix:</p>
+        <ul>
+          <li>ImageViewer uses OS-managed window (QDialog + explicit flags)</li>
+          <li>Reliable window resize on Wayland/GNOME</li>
+          <li>Minimize, maximize, close buttons work correctly</li>
+        </ul>
+      </description>
+      <description xml:lang="uz">
+        <p>Oyna o'lchamini tuzatish:</p>
+        <ul>
+          <li>ImageViewer OS boshqaradigan oyna (QDialog + aniq flags)</li>
+          <li>Wayland/GNOME da ishonchli resize</li>
+          <li>Minimize, maximize, close tugmalari to'g'ri ishlaydi</li>
+        </ul>
+      </description>
+      <description xml:lang="ru">
+        <p>Исправление изменения размера окна:</p>
+        <ul>
+          <li>ImageViewer использует окно под управлением ОС (QDialog + явные флаги)</li>
+          <li>Надёжное изменение размера на Wayland/GNOME</li>
+          <li>Кнопки свернуть, развернуть, закрыть работают правильно</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.3" date="2025-10-08">
       <description>
         <p>UI polish:</p>
