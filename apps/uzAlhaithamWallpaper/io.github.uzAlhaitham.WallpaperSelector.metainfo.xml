@@ -60,6 +60,33 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.2.6" date="2025-10-08">
+      <description>
+        <p>Config path fix per platform:</p>
+        <ul>
+          <li>Windows: config now in %LOCALAPPDATA%\uzAlhaithamWallpaper\</li>
+          <li>macOS: config in ~/Library/Application Support/uzAlhaithamWallpaper/</li>
+          <li>Linux: unchanged (~/.uzalhaitham_wallpaper.json)</li>
+          <li>No more mixed paths between platforms</li>
+        </ul>
+      </description>
+      <description xml:lang="uz">
+        <p>Har bir OS uchun config yo'li:</p>
+        <ul>
+          <li>Windows: %LOCALAPPDATA%\uzAlhaithamWallpaper\</li>
+          <li>macOS: ~/Library/Application Support/uzAlhaithamWallpaper/</li>
+          <li>Linux: o'zgarishsiz (~/.uzalhaitham_wallpaper.json)</li>
+        </ul>
+      </description>
+      <description xml:lang="ru">
+        <p>Путь конфигурации для каждой ОС:</p>
+        <ul>
+          <li>Windows: %LOCALAPPDATA%\uzAlhaithamWallpaper\</li>
+          <li>macOS: ~/Library/Application Support/uzAlhaithamWallpaper/</li>
+          <li>Linux: без изменений (~/.uzalhaitham_wallpaper.json)</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.5" date="2025-10-08">
       <description>
         <p>Wayland fix — window resize now works perfectly:</p>
