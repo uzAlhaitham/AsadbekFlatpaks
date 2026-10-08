@@ -1274,8 +1274,17 @@ class ImageViewer(QDialog):
         self._RESIZE_MARGIN = 25
 
         self.setWindowTitle("uzAlhaitham's wallpaper Selector")
-        # OS titlebar (Wayland/GNOME uchun ishonchli resize)
-        self.setWindowFlags(Qt.Window)
+        # Standart OS oyna (resize, minimize, maximize, close)
+        self.setWindowFlags(
+            Qt.Window
+            | Qt.WindowTitleHint
+            | Qt.WindowSystemMenuHint
+            | Qt.WindowMinimizeButtonHint
+            | Qt.WindowMaximizeButtonHint
+            | Qt.WindowCloseButtonHint
+        )
+        # Dialog emas, oddiy oyna sifatida
+        self.setWindowModality(Qt.NonModal)
 
         # 90% — main window (parent) dan olamiz
         if parent is not None and parent.width() > 100:
