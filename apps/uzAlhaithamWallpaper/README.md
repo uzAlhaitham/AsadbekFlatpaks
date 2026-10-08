@@ -21,7 +21,7 @@ flatpak install -y flathub org.kde.Platform//5.15-24.08 com.riverbankcomputing.P
 
 ### 2. Ilovani o'rnatish
 
-flatpak install --user bundle/uzAlhaithamWallpaper.flatpak
+flatpak install --user bundle/WallpaperSelector-x86_64.flatpak
 
 ### 3. Ishga tushirish
 
