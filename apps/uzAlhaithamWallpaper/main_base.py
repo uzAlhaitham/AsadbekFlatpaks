@@ -1271,7 +1271,7 @@ class ImageViewer(QDialog):
         self._resizing = False
         self._resize_edge = None
         self._resize_start = None
-        self._RESIZE_MARGIN = 8
+        self._RESIZE_MARGIN = 12
 
         self.setWindowTitle("uzAlhaitham's wallpaper Selector")
         # Frameless
@@ -1667,7 +1667,7 @@ class ImageViewer(QDialog):
         if aspect is None or aspect <= 0:
             aspect = w0 / max(h0, 1)
 
-        MIN_W = 300
+        MIN_W = 250
         edge = self._resize_edge
 
         # Anchor nuqtasi: qaysi burchak qimirlamaydi

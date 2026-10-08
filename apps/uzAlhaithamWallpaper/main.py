@@ -132,7 +132,7 @@ class ZoomView(QGraphicsView):
         event.accept()
 
     # ── Mouse events ──
-    WINDOW_DRAG_ZONE = 40
+    WINDOW_DRAG_ZONE = 80
 
     def _parent_iv(self):
         w = self.parent()
@@ -154,11 +154,21 @@ class ZoomView(QGraphicsView):
             e.accept()
             return
 
-        if local.y() <= self.WINDOW_DRAG_ZONE:
+        # Ctrl + chap tugma -> oyna sudrash (hamma joyda)
+        if e.modifiers() & Qt.ControlModifier:
             parent._drag_pos = e.globalPos() - parent.frameGeometry().topLeft()
+            self.setCursor(Qt.ClosedHandCursor)
             e.accept()
             return
 
+        # Tepa zonada -> oyna sudrash
+        if local.y() <= self.WINDOW_DRAG_ZONE:
+            parent._drag_pos = e.globalPos() - parent.frameGeometry().topLeft()
+            self.setCursor(Qt.ClosedHandCursor)
+            e.accept()
+            return
+
+        # Boshqa joyda -> rasm pan
         self.setDragMode(QGraphicsView.ScrollHandDrag)
         super().mousePressEvent(e)
 
@@ -588,6 +598,10 @@ class AnimatedImageViewer(base.ImageViewer):
                 (self.width() - 40) // 2,
                 (self.height() - 40) // 2)
         super()._load()
+
+    def _apply_aspect_once(self):
+        # Oynani rasmga moslashtirmaymiz - foydalanuvchi o'zi boshqaradi
+        pass
 
     def _update(self):
         pass
