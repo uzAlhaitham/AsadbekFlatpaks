@@ -1,0 +1,21 @@
+name: Flatpak Build and Publish
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  flatpak:
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-46
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+      - uses: andyholmes/flatter@main
+        with:
+          files: |
+            ai.storyteller.photocraft.json
+          gpg-sign: ${{ secrets.GPG_SIGNING_KEY }}
+          upload-pages: true
+          flatpak-builder-args: --disable-rofiles-fuse
