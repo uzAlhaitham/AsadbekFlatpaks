@@ -4,20 +4,24 @@ A personal Flatpak repository — my curated collection of hand-packaged, GPG-si
 
 ## Available Applications
 
-| App | Package | Description |
-|-----|---------|-------------|
-| **Namida** | `com.msob7y.namida` | Beautiful music & video player with YouTube support |
-| **WSelector** | `io.github.Cookiiieee.WSelector` | Wallpaper Selector Manager |
-| **Ranking System** | `io.github.uzalhaitham.RankingSystem` | Genshin Impact profile viewer with Akasha.cv ranking |
-| **Wallpaper Selector** | `io.github.uzAlhaitham.WallpaperSelector` | Browse and set wallpapers from Wallhaven.cc |
+| App | Package | Platform | Description |
+|-----|---------|----------|-------------|
+| **Namida** | `com.msob7y.namida` | Linux | Beautiful music & video player with YouTube support |
+| **WSelector** | `io.github.Cookiiieee.WSelector` | Linux | Wallpaper Selector Manager |
+| **Ranking System** | `io.github.uzalhaitham.RankingSystem` | Linux | Genshin Impact profile viewer with Akasha.cv ranking |
+| **Wallpaper Selector** | `io.github.uzAlhaitham.WallpaperSelector` | Linux + Windows | Browse and set wallpapers from Wallhaven.cc |
 
-## Adding the Repository
+## Linux — Adding the Repository
 
     flatpak remote-add --if-not-exists asadbekflatpaks https://uzAlhaitham.github.io/AsadbekFlatpaks/asadbekflatpaks.flatpakrepo
 
 Then install any app:
 
     flatpak install asadbekflatpaks io.github.uzAlhaitham.WallpaperSelector
+
+## Windows — Direct Download
+
+Download the latest `.exe` from the [Releases](https://github.com/uzAlhaitham/AsadbekFlatpaks/releases) page. No installation required — just run it.
 
 ## Credits
 
