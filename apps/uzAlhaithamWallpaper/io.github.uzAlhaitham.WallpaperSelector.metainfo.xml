@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.uzAlhaitham.WallpaperSelector</id>
+  <name>uzAlhaitham's Wallpaper Selector</name>
+  <summary>Browse and set wallpapers from Wallhaven</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>A PyQt5 wallpaper browser that fetches images from Wallhaven.cc
+       and sets them as your desktop background.</p>
+  </description>
+  <launchable type="desktop-id">io.github.uzAlhaitham.WallpaperSelector.desktop</launchable>
+  <url type="homepage">https://github.com/uzAlhaitham</url>
+  <releases>
+    <release version="1.0.0" date="2025-01-01"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>

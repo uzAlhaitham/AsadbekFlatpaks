@@ -1,0 +1,61 @@
+app-id: io.github.uzAlhaitham.WallpaperSelector
+runtime: org.kde.Platform
+runtime-version: '5.15-24.08'
+sdk: org.kde.Sdk
+base: com.riverbankcomputing.PyQt.BaseApp
+base-version: '5.15-24.08'
+command: wallpaper-selector.sh
+
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
+
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --share=network
+  - --filesystem=home
+  - --talk-name=org.kde.plasmashell
+  - --talk-name=org.kde.KWin
+  - --talk-name=org.gnome.Shell
+  - --talk-name=org.freedesktop.portal.Desktop
+  - --talk-name=org.freedesktop.Flatpak
+  - --socket=session-bus
+
+modules:
+  - pybind11-module.json
+  - python3-requirements.json
+
+  - name: wallpaper-selector
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 wallpaper-selector.sh /app/bin/wallpaper-selector.sh
+      - install -Dm644 main.py /app/share/wallpaper-selector/main.py
+      - install -Dm644 io.github.uzAlhaitham.WallpaperSelector.desktop /app/share/applications/io.github.uzAlhaitham.WallpaperSelector.desktop
+      - install -Dm644 io.github.uzAlhaitham.WallpaperSelector.metainfo.xml /app/share/metainfo/io.github.uzAlhaitham.WallpaperSelector.metainfo.xml
+      - install -Dm644 icon-64.png /app/share/icons/hicolor/64x64/apps/io.github.uzAlhaitham.WallpaperSelector.png
+      - install -Dm644 icon-128.png /app/share/icons/hicolor/128x128/apps/io.github.uzAlhaitham.WallpaperSelector.png
+      - install -Dm644 icon-256.png /app/share/icons/hicolor/256x256/apps/io.github.uzAlhaitham.WallpaperSelector.png
+      - install -Dm644 icon-512.png /app/share/icons/hicolor/512x512/apps/io.github.uzAlhaitham.WallpaperSelector.png
+    sources:
+      - type: file
+        path: main.py
+      - type: file
+        path: wallpaper-selector.sh
+      - type: file
+        path: io.github.uzAlhaitham.WallpaperSelector.desktop
+      - type: file
+        path: io.github.uzAlhaitham.WallpaperSelector.metainfo.xml
+      - type: file
+        path: icons/64/io.github.uzAlhaitham.WallpaperSelector.png
+        dest-filename: icon-64.png
+      - type: file
+        path: icons/128/io.github.uzAlhaitham.WallpaperSelector.png
+        dest-filename: icon-128.png
+      - type: file
+        path: icons/256/io.github.uzAlhaitham.WallpaperSelector.png
+        dest-filename: icon-256.png
+      - type: file
+        path: icons/512/io.github.uzAlhaitham.WallpaperSelector.png
+        dest-filename: icon-512.png
