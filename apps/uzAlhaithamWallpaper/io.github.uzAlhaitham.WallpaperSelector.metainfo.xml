@@ -60,6 +60,38 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.2.5" date="2025-10-08">
+      <description>
+        <p>Wayland fix — window resize now works perfectly:</p>
+        <ul>
+          <li>Force X11 backend in Flatpak (QT_QPA_PLATFORM=xcb)</li>
+          <li>Remove Wayland socket from sandbox permissions</li>
+          <li>Reliable window resize, drag, and cursor behavior</li>
+          <li>Image viewer opens at 90% of main window</li>
+          <li>Smooth synchronized window/image resize</li>
+        </ul>
+        <p>This fixes all remaining Wayland/GNOME glitches.</p>
+      </description>
+      <description xml:lang="uz">
+        <p>Wayland tuzatildi — oyna o'lchami endi mukammal ishlaydi:</p>
+        <ul>
+          <li>Flatpak'da X11 backend majburiy (QT_QPA_PLATFORM=xcb)</li>
+          <li>Wayland socket sandbox ruxsatlaridan olib tashlandi</li>
+          <li>Ishonchli oyna resize, drag va cursor</li>
+          <li>ImageViewer asosiy oynaning 90% i hajmida ochiladi</li>
+        </ul>
+        <p>Bu Wayland/GNOME glitch'larini butunlay tuzatadi.</p>
+      </description>
+      <description xml:lang="ru">
+        <p>Исправление Wayland:</p>
+        <ul>
+          <li>Принудительный X11 backend в Flatpak (QT_QPA_PLATFORM=xcb)</li>
+          <li>Удалён Wayland socket из разрешений песочницы</li>
+          <li>Надёжное изменение размера, перетаскивание, курсор</li>
+          <li>Просмотрщик открывается на 90% основного окна</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.4" date="2025-10-08">
       <description>
         <p>Window resize fix:</p>
