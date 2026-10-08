@@ -1,0 +1,57 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/uzAlhaithamWallpaper/main.py'
+      - 'apps/uzAlhaithamWallpaper/main_base.py'
+      - 'apps/uzAlhaithamWallpaper/main_windows.py'
+      - 'apps/uzAlhaithamWallpaper/main_base_windows.py'
+      - 'apps/uzAlhaithamWallpaper/icons/**'
+      - '.github/workflows/build-windows.yml'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyQt5 requests Pillow pyinstaller
+
+      - name: Create .ico from PNG
+        shell: python
+        run: |
+          from PIL import Image
+          img = Image.open('apps/uzAlhaithamWallpaper/icons/256/io.github.uzAlhaitham.WallpaperSelector.png')
+          img.save('icon.ico', sizes=[(256,256),(128,128),(64,64),(48,48),(32,32),(16,16)])
+          print("icon.ico created")
+
+      - name: Build EXE
+        working-directory: apps/uzAlhaithamWallpaper
+        run: |
+          pyinstaller --onefile --windowed `
+              --name "WallpaperSelector" `
+              --icon "../../icon.ico" `
+              main.py
+
+      - name: Test EXE exists
+        run: |
+          dir apps\uzAlhaithamWallpaper\dist
+
+      - name: Upload EXE artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WallpaperSelector-Windows
+          path: apps/uzAlhaithamWallpaper/dist/WallpaperSelector.exe
+          retention-days: 30

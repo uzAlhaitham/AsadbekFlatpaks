@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=uzAlhaitham's Wallpaper Selector
+Comment=Browse and set wallpapers from Wallhaven
+Exec=wallpaper-selector.sh
+Icon=io.github.uzAlhaitham.WallpaperSelector
+Terminal=false
+Type=Application
+Categories=Utility;Graphics;
+Keywords=wallpaper;background;wallhaven;uzalhaitham;
+StartupNotify=true

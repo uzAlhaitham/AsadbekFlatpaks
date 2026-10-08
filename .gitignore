@@ -8,3 +8,6 @@ build-dir/
 *.b64
 private.key
 public.key
+
+# Windows build output (LFS artifact)
+WallpaperSelector-Windows/
