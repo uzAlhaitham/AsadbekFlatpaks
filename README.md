@@ -7,6 +7,7 @@ A personal Flatpak repository — my curated collection of hand-packaged, GPG-si
 | App | Package | Version | Description |
 |-----|---------|---------|-------------|
 | **Namida** | `com.msob7y.namida` | 7.1.2 | Beautiful music & video player with YouTube support |
+| **Wallpaper Selector** | `io.github.uzAlhaitham.WallpaperSelector` | 1.0.0 | Browse and set wallpapers from Wallhaven.cc |
 
 ## Adding the Repository
 
@@ -17,6 +18,7 @@ A personal Flatpak repository — my curated collection of hand-packaged, GPG-si
 All applications are the work of their respective authors. This repository only repackages them for personal use.
 
 - [Namida](https://github.com/namidaco/namida) — developed by namidaco
+- [Wallpaper Selector](apps/uzAlhaithamWallpaper/) — developed by uzAlhaitham
 
 ## License
 
@@ -24,5 +26,6 @@ The configuration, scripts, and metadata in **this repository** are licensed und
 
 The applications themselves are licensed under their own respective licenses:
 - **Namida** — EULA (see [upstream](https://github.com/namidaco/namida))
+- **Wallpaper Selector** — MIT
 
 This repository is **not affiliated** with the original app developers.
