@@ -1271,22 +1271,20 @@ class ImageViewer(QDialog):
         self._resizing = False
         self._resize_edge = None
         self._resize_start = None
-        self._RESIZE_MARGIN = 12
+        self._RESIZE_MARGIN = 25
 
         self.setWindowTitle("uzAlhaitham's wallpaper Selector")
-        # Frameless
-        self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint)
+        # OS titlebar (Wayland/GNOME uchun ishonchli resize)
+        self.setWindowFlags(Qt.Window)
 
         # 90% — main window (parent) dan olamiz
         if parent is not None and parent.width() > 100:
             w = int(parent.width() * 0.9)
             h = int(parent.height() * 0.9)
-            # Parent markaziga joylashtiramiz
             pg = parent.frameGeometry()
             x = pg.x() + (pg.width() - w) // 2
             y = pg.y() + (pg.height() - h) // 2
         else:
-            # Fallback: ekran markazi
             screen = QApplication.primaryScreen().availableGeometry()
             w = int(screen.width() * 0.9)
             h = int(screen.height() * 0.9)
@@ -1677,7 +1675,7 @@ class ImageViewer(QDialog):
         if aspect is None or aspect <= 0:
             aspect = w0 / max(h0, 1)
 
-        MIN_W = 250
+        MIN_W = 300
         edge = self._resize_edge
 
         # Anchor nuqtasi: qaysi burchak qimirlamaydi

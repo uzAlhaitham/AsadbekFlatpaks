@@ -49,34 +49,298 @@ class ZoomView(QGraphicsView):
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.setFrameShape(QFrame.NoFrame)
         self.setStyleSheet("""
-            QGraphicsView { background: #0d0d0d; border: none; }
-            QScrollBar:vertical { background: #1a1a1a; width: 12px;
-                border-radius: 6px; margin: 0; }
-            QScrollBar::handle:vertical { background: #4a4a4a;
-                border-radius: 6px; min-height: 30px; }
-            QScrollBar::handle:vertical:hover { background: #5a9fd4; }
-            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical
-                { height: 0; background: transparent; }
-            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
-                { background: transparent; }
-            QScrollBar:horizontal { background: #1a1a1a; height: 12px;
-                border-radius: 6px; margin: 0; }
-            QScrollBar::handle:horizontal { background: #4a4a4a;
-                border-radius: 6px; min-width: 30px; }
-            QScrollBar::handle:horizontal:hover { background: #5a9fd4; }
-            QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal
-                { width: 0; background: transparent; }
-            QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
-                { background: transparent; }
-        """)
+            QGraphicsView {
+                background: transparent;
+                border: none;
+            }
 
+            /* Vertikal scrollbar */
+            QScrollBar:vertical {
+                background: rgba(0, 0, 0, 0.2);
+                width: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:vertical {
+                background: rgba(200, 200, 200, 0.7);
+                border-radius: 5px;
+                min-height: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: rgba(220, 220, 220, 0.9);
+            }
+            QScrollBar::handle:vertical:pressed {
+                background: rgba(90, 159, 212, 0.95);
+            }
+            QScrollBar::add-line:vertical,
+            QScrollBar::sub-line:vertical,
+            QScrollBar::add-page:vertical,
+            QScrollBar::sub-page:vertical,
+            QScrollBar::up-arrow:vertical,
+            QScrollBar::down-arrow:vertical {
+                background: transparent;
+                height: 0;
+                width: 0;
+                border: none;
+            }
+
+            /* Gorizontal scrollbar */
+            QScrollBar:horizontal {
+                background: rgba(0, 0, 0, 0.2);
+                height: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:horizontal {
+                background: rgba(200, 200, 200, 0.7);
+                border-radius: 5px;
+                min-width: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:horizontal:hover {
+                background: rgba(220, 220, 220, 0.9);
+            }
+            QScrollBar::handle:horizontal:pressed {
+                background: rgba(90, 159, 212, 0.95);
+            }
+            QScrollBar::add-line:horizontal,
+            QScrollBar::sub-line:horizontal,
+            QScrollBar::add-page:horizontal,
+            QScrollBar::sub-page:horizontal,
+            QScrollBar::left-arrow:horizontal,
+            QScrollBar::right-arrow:horizontal {
+                background: transparent;
+                height: 0;
+                width: 0;
+                border: none;
+            }
+
+            /* Corner (scrollbarlar kesishgan joy) */
+            QAbstractScrollArea::corner {
+                background: rgba(0, 0, 0, 0.2);
+                border: none;
+            }
+        """)
         self._scene = QGraphicsScene(self)
-        self._scene.setBackgroundBrush(QBrush(QColor("#0d0d0d")))
+        self._scene.setBackgroundBrush(QBrush(Qt.transparent))
         self.setScene(self._scene)
+
+        # Viewport va widget background to'liq shaffof
+        self.setStyleSheet("background: transparent; border: none;")
+        self.setBackgroundBrush(QBrush(Qt.transparent))
+        self.setAutoFillBackground(False)
+        self.viewport().setAutoFillBackground(False)
+        self.viewport().setAttribute(Qt.WA_TranslucentBackground, True)
+        self.viewport().setStyleSheet("background: transparent;")
+
+
+        # Scrollbar'larga to'g'ridan-to'g'ri shaffof style
+        scrollbar_style = """
+            QScrollBar:vertical {
+                background: rgba(255, 255, 255, 0.02);
+                width: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:vertical {
+                background: rgba(200, 200, 200, 0.5);
+                border-radius: 5px;
+                min-height: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: rgba(220, 220, 220, 0.8);
+            }
+            QScrollBar::add-line:vertical,
+            QScrollBar::sub-line:vertical,
+            QScrollBar::add-page:vertical,
+            QScrollBar::sub-page:vertical {
+                background: transparent;
+                height: 0;
+                border: none;
+            }
+
+            QScrollBar:horizontal {
+                background: rgba(255, 255, 255, 0.02);
+                height: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:horizontal {
+                background: rgba(200, 200, 200, 0.5);
+                border-radius: 5px;
+                min-width: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:horizontal:hover {
+                background: rgba(220, 220, 220, 0.8);
+            }
+            QScrollBar::add-line:horizontal,
+            QScrollBar::sub-line:horizontal,
+            QScrollBar::add-page:horizontal,
+            QScrollBar::sub-page:horizontal {
+                background: transparent;
+                width: 0;
+                border: none;
+            }
+        """
+
+        self.horizontalScrollBar().setStyleSheet(scrollbar_style)
+        self.verticalScrollBar().setStyleSheet(scrollbar_style)
+        self.horizontalScrollBar().setAttribute(Qt.WA_TranslucentBackground)
+        self.verticalScrollBar().setAttribute(Qt.WA_TranslucentBackground)
+        # Corner widget
+        self.setCornerWidget = None  # default corner
+
+        # Rasm yuklanganda sceneRect'ni rasmga moslashtiradi
+
+
+        # Scrollbar'larga to'g'ridan-to'g'ri shaffof style
+        scrollbar_style = """
+            QScrollBar:vertical {
+                background: rgba(255, 255, 255, 0.02);
+                width: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:vertical {
+                background: rgba(200, 200, 200, 0.5);
+                border-radius: 5px;
+                min-height: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: rgba(220, 220, 220, 0.8);
+            }
+            QScrollBar::add-line:vertical,
+            QScrollBar::sub-line:vertical,
+            QScrollBar::add-page:vertical,
+            QScrollBar::sub-page:vertical {
+                background: transparent;
+                height: 0;
+                border: none;
+            }
+
+            QScrollBar:horizontal {
+                background: rgba(255, 255, 255, 0.02);
+                height: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:horizontal {
+                background: rgba(200, 200, 200, 0.5);
+                border-radius: 5px;
+                min-width: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:horizontal:hover {
+                background: rgba(220, 220, 220, 0.8);
+            }
+            QScrollBar::add-line:horizontal,
+            QScrollBar::sub-line:horizontal,
+            QScrollBar::add-page:horizontal,
+            QScrollBar::sub-page:horizontal {
+                background: transparent;
+                width: 0;
+                border: none;
+            }
+        """
+
+        self.horizontalScrollBar().setStyleSheet(scrollbar_style)
+        self.verticalScrollBar().setStyleSheet(scrollbar_style)
+        self.horizontalScrollBar().setAttribute(Qt.WA_TranslucentBackground)
+        self.verticalScrollBar().setAttribute(Qt.WA_TranslucentBackground)
+        # Corner widget
+        self.setCornerWidget = None  # default corner
+
+        # Rasm yuklanganda sceneRect'ni rasmga moslashtiradi
 
         self._item = None
         self._zoom = 1.0
         self._fit_mode = True
+
+        # ═══════════════════════════════════════════════════════
+        #  SCROLLBAR STYLES — to'g'ridan-to'g'ri widget'larga
+        # ═══════════════════════════════════════════════════════
+        _sb_style = '''
+            QScrollBar:vertical {
+                background: transparent;
+                width: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:vertical {
+                background: rgba(220, 220, 220, 0.55);
+                border-radius: 5px;
+                min-height: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: rgba(220, 220, 220, 0.85);
+            }
+            QScrollBar::handle:vertical:pressed {
+                background: rgba(90, 159, 212, 0.95);
+            }
+            QScrollBar::add-line:vertical,
+            QScrollBar::sub-line:vertical,
+            QScrollBar::add-page:vertical,
+            QScrollBar::sub-page:vertical,
+            QScrollBar::up-arrow:vertical,
+            QScrollBar::down-arrow:vertical {
+                background: transparent;
+                height: 0;
+                width: 0;
+                border: none;
+            }
+
+            QScrollBar:horizontal {
+                background: transparent;
+                height: 10px;
+                margin: 0;
+                border: none;
+            }
+            QScrollBar::handle:horizontal {
+                background: rgba(220, 220, 220, 0.55);
+                border-radius: 5px;
+                min-width: 40px;
+                margin: 2px;
+            }
+            QScrollBar::handle:horizontal:hover {
+                background: rgba(220, 220, 220, 0.85);
+            }
+            QScrollBar::handle:horizontal:pressed {
+                background: rgba(90, 159, 212, 0.95);
+            }
+            QScrollBar::add-line:horizontal,
+            QScrollBar::sub-line:horizontal,
+            QScrollBar::add-page:horizontal,
+            QScrollBar::sub-page:horizontal,
+            QScrollBar::left-arrow:horizontal,
+            QScrollBar::right-arrow:horizontal {
+                background: transparent;
+                height: 0;
+                width: 0;
+                border: none;
+            }
+        '''
+
+        self.horizontalScrollBar().setStyleSheet(_sb_style)
+        self.verticalScrollBar().setStyleSheet(_sb_style)
+
+        # Viewport va fon shaffof
+        self.setStyleSheet("QGraphicsView { background: transparent; border: none; }")
+        self.setBackgroundBrush(QBrush(Qt.transparent))
+        self.setAutoFillBackground(False)
+        self.viewport().setAutoFillBackground(False)
+        self.viewport().setStyleSheet("background: transparent;")
+        self.viewport().setAttribute(Qt.WA_TranslucentBackground, True)
+        self.viewport().setAttribute(Qt.WA_NoSystemBackground, True)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setAttribute(Qt.WA_NoSystemBackground, True)
+
+        # Corner widget ham shaffof
+        self.setCornerWidget = None  # default corner ishlatiladi
 
     def set_image(self, image):
         pm = QPixmap.fromImage(image)
@@ -132,7 +396,7 @@ class ZoomView(QGraphicsView):
         event.accept()
 
     # ── Mouse events ──
-    WINDOW_DRAG_ZONE = 80
+    WINDOW_DRAG_ZONE = 40
 
     def _parent_iv(self):
         w = self.parent()
@@ -141,105 +405,35 @@ class ZoomView(QGraphicsView):
         return w
 
     def mousePressEvent(self, e):
-        parent = self._parent_iv()
-        if parent is None:
+        # Faqat chap tugma rasm pan uchun (resize/drag OS tomonidan)
+        if e.button() == Qt.LeftButton:
+            self.setDragMode(QGraphicsView.ScrollHandDrag)
+            super().mousePressEvent(e)
+        else:
             e.ignore()
-            return
-
-        # O'rta tugma yoki Alt/Control -> oyna sudrash (har qanday joyda)
-        is_window_drag_key = (
-            e.button() == Qt.MiddleButton or
-            (e.button() == Qt.LeftButton and
-             (e.modifiers() & (Qt.ControlModifier | Qt.AltModifier)))
-        )
-        if is_window_drag_key:
-            parent._drag_pos = e.globalPos() - parent.frameGeometry().topLeft()
-            self.setCursor(Qt.ClosedHandCursor)
-            e.accept()
-            return
-
-        if e.button() != Qt.LeftButton:
-            e.ignore()
-            return
-
-        local = parent.mapFromGlobal(e.globalPos())
-        edge = parent._edge_at(local)
-        if edge:
-            parent._resize_edge = edge
-            parent._resize_start = (e.globalPos(), parent.geometry())
-            e.accept()
-            return
-
-        # Tepa zonada -> oyna sudrash
-        if local.y() <= self.WINDOW_DRAG_ZONE:
-            parent._drag_pos = e.globalPos() - parent.frameGeometry().topLeft()
-            self.setCursor(Qt.ClosedHandCursor)
-            e.accept()
-            return
-
-        # Boshqa joyda -> rasm pan
-        self.setDragMode(QGraphicsView.ScrollHandDrag)
-        super().mousePressEvent(e)
 
     def mouseMoveEvent(self, e):
+        # Faqat UI timer reset
         parent = self._parent_iv()
-        if parent is None:
-            e.ignore()
-            return
-
-        # UI ko'rsatish + hide timer reset
-        try:
-            parent._show_ui()
-            if hasattr(parent, "_hide_timer"):
-                parent._hide_timer.start(2000)
-        except Exception:
-            pass
-
-        if parent._resize_edge and (e.buttons() & Qt.LeftButton):
-            parent._perform_resize(e.globalPos())
-            e.accept()
-            return
-
-        if not (e.buttons() & Qt.LeftButton):
-            local = parent.mapFromGlobal(e.globalPos())
-            edge = parent._edge_at(local)
-            cursors = {
-                "l": Qt.SizeHorCursor, "r": Qt.SizeHorCursor,
-                "t": Qt.SizeVerCursor, "b": Qt.SizeVerCursor,
-                "tl": Qt.SizeFDiagCursor, "br": Qt.SizeFDiagCursor,
-                "tr": Qt.SizeBDiagCursor, "bl": Qt.SizeBDiagCursor,
-            }
-            if edge:
-                self.setCursor(cursors[edge])
-            elif local.y() <= self.WINDOW_DRAG_ZONE:
-                self.setCursor(Qt.OpenHandCursor)
-            else:
-                self.unsetCursor()
-
-        if parent._drag_pos is not None and (e.buttons() & Qt.LeftButton):
-            parent.move(e.globalPos() - parent._drag_pos)
-            e.accept()
-            return
-
+        if parent is not None:
+            try:
+                parent._show_ui()
+                if hasattr(parent, "_hide_timer"):
+                    parent._hide_timer.start(2000)
+            except Exception:
+                pass
         super().mouseMoveEvent(e)
 
     def mouseReleaseEvent(self, e):
-        parent = self._parent_iv()
-        if parent is not None:
-            parent._drag_pos = None
-            parent._resize_edge = None
-            parent._resize_start = None
-            self.unsetCursor()
         super().mouseReleaseEvent(e)
 
     def mouseDoubleClickEvent(self, e):
+        # Double-click -> Fit toggle
         parent = self._parent_iv()
         if parent is not None and e.button() == Qt.LeftButton:
-            local = parent.mapFromGlobal(e.globalPos())
-            if local.y() <= 60:
-                parent._toggle_fs()
-                e.accept()
-                return
+            parent._zoom_view.fit_to_screen()
+            e.accept()
+            return
         e.ignore()
 
     def enterEvent(self, e):
@@ -546,6 +740,30 @@ class AnimatedImageViewer(base.ImageViewer):
         QShortcut(QKeySequence("F"), self, self._zoom_view.fit_to_screen)
         QShortcut(QKeySequence("1"), self, self._zoom_view.zoom_100)
 
+        # Scrollbar'larni to'g'ridan-to'g'ri shaffof qilamiz
+        for sb in (self._zoom_view.horizontalScrollBar(),
+                   self._zoom_view.verticalScrollBar()):
+            sb.setStyleSheet("""
+                QScrollBar { background: transparent; border: none; }
+                QScrollBar::handle {
+                    background: rgba(200,200,200,0.5);
+                    border-radius: 5px;
+                    margin: 2px;
+                }
+                QScrollBar::handle:hover {
+                    background: rgba(220,220,220,0.8);
+                }
+                QScrollBar::add-line, QScrollBar::sub-line,
+                QScrollBar::add-page, QScrollBar::sub-page {
+                    background: transparent; border: none;
+                    width: 0; height: 0;
+                }
+                QScrollBar::up-arrow, QScrollBar::down-arrow,
+                QScrollBar::left-arrow, QScrollBar::right-arrow {
+                    background: transparent; border: none;
+                }
+            """)
+
         self._zoom_view.horizontalScrollBar().valueChanged.connect(
             self._raise_bars)
         self._zoom_view.verticalScrollBar().valueChanged.connect(
@@ -564,6 +782,43 @@ class AnimatedImageViewer(base.ImageViewer):
             QPushButton:hover { background: rgba(55,55,55,1.0); }
         """)
         return b
+
+    def _apply_scrollbar_style(self):
+        """Scrollbar'larga shaffof style qayta qo'llash."""
+        if not hasattr(self, "_zoom_view"):
+            return
+        sb = self._zoom_view
+        sb_style = """
+            QScrollBar {
+                background: transparent;
+                border: none;
+            }
+            QScrollBar:vertical { width: 10px; }
+            QScrollBar:horizontal { height: 10px; }
+            QScrollBar::handle {
+                background: rgba(220, 220, 220, 0.55);
+                border-radius: 5px;
+                margin: 2px;
+            }
+            QScrollBar::handle:hover {
+                background: rgba(220, 220, 220, 0.85);
+            }
+            QScrollBar::add-line, QScrollBar::sub-line,
+            QScrollBar::add-page, QScrollBar::sub-page {
+                background: transparent;
+                border: none;
+                width: 0; height: 0;
+            }
+            QScrollBar::up-arrow, QScrollBar::down-arrow,
+            QScrollBar::left-arrow, QScrollBar::right-arrow {
+                background: transparent;
+                border: none;
+            }
+        """
+        sb.horizontalScrollBar().setStyleSheet(sb_style)
+        sb.verticalScrollBar().setStyleSheet(sb_style)
+        sb.viewport().setStyleSheet("background: transparent;")
+        sb.viewport().setAutoFillBackground(False)
 
     def _raise_bars(self):
         try:
@@ -587,6 +842,8 @@ class AnimatedImageViewer(base.ImageViewer):
         if img.height() > 0:
             self._aspect = img.width() / img.height()
         self._zoom_view.set_image(img)
+        # Scrollbar shaffofligini qayta qo'llash (set_image reset qilishi mumkin)
+        self._apply_scrollbar_style()
         self._zoom_view.show()
         self._zoom_view.raise_()
         self._spinner.stop()
@@ -607,10 +864,6 @@ class AnimatedImageViewer(base.ImageViewer):
                 (self.width() - 40) // 2,
                 (self.height() - 40) // 2)
         super()._load()
-
-    def _apply_aspect_once(self):
-        # Oynani rasmga moslashtirmaymiz - foydalanuvchi o'zi boshqaradi
-        pass
 
     def _update(self):
         pass

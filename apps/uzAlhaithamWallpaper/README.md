@@ -53,6 +53,27 @@ No installation required - just double-click.
 
 ## Changelog
 
+### v1.2.3 - 2025-10-08
+
+**UI polish:**
+
+- Transparent scrollbars in image viewer (no more solid black bars)
+- Smooth scrollbar handles with hover and pressed states
+- Image viewer opens at 90% of main window
+- Native OS titlebar for reliable resize (fixed Wayland/GNOME glitch)
+- Cleaner image viewer layout
+
+### v1.2.2 - 2025-10-08
+
+- Easier window drag (middle mouse, Alt, Ctrl)
+- Image viewer size = 90% of main window
+
+### v1.2.1 - 2025-10-08
+
+- Fixed window stays at user-chosen size when switching images
+- Window can now be resized smaller (MIN_W 300 -> 250)
+- Ctrl + left-click to drag window
+
 ### v1.1.0 - 2025-10-08
 
 **New features:**

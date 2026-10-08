@@ -60,6 +60,90 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.2.3" date="2025-10-08">
+      <description>
+        <p>UI polish:</p>
+        <ul>
+          <li>Transparent scrollbars in image viewer (no solid black bars)</li>
+          <li>Smooth scrollbar handles with hover and pressed states</li>
+          <li>Image viewer opens at 90% of main window</li>
+          <li>Native OS titlebar for reliable window resize and drag</li>
+          <li>Cleaner image viewer layout</li>
+        </ul>
+      </description>
+      <description xml:lang="uz">
+        <p>Interfeys sayqali:</p>
+        <ul>
+          <li>Shaffof scrollbarlar (qora chiziqlar yo'q)</li>
+          <li>Silliq scrollbar tutqichlari (hover va bosish effektlari)</li>
+          <li>ImageViewer asosiy oynaning 90% i hajmida ochiladi</li>
+          <li>Ishonchli resize uchun OS titlebar</li>
+          <li>Tozaroq ImageViewer dizayni</li>
+        </ul>
+      </description>
+      <description xml:lang="ru">
+        <p>Полировка интерфейса:</p>
+        <ul>
+          <li>Прозрачные полосы прокрутки (без чёрных полос)</li>
+          <li>Плавные ручки прокрутки с эффектами наведения</li>
+          <li>Просмотрщик открывается на 90% основного окна</li>
+          <li>Нативная строка заголовка ОС для надёжного изменения размера</li>
+          <li>Более чистый интерфейс просмотрщика</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.2" date="2025-10-08">
+      <description>
+        <p>Window drag improvements:</p>
+        <ul>
+          <li>Middle-mouse-button to drag window anywhere</li>
+          <li>Alt + left-click to drag window</li>
+          <li>Ctrl + left-click to drag window</li>
+        </ul>
+      </description>
+      <description xml:lang="uz">
+        <p>Oynani sudrash yaxshilandi:</p>
+        <ul>
+          <li>O'rta sichqoncha tugmasi bilan istalgan joyda oynani sudrash</li>
+          <li>Alt + chap tugma — oynani sudrash</li>
+          <li>Ctrl + chap tugma — oynani sudrash</li>
+        </ul>
+      </description>
+      <description xml:lang="ru">
+        <p>Улучшения перетаскивания окна:</p>
+        <ul>
+          <li>Перетаскивание окна средней кнопкой мыши в любом месте</li>
+          <li>Alt + ЛКМ для перетаскивания окна</li>
+          <li>Ctrl + ЛКМ для перетаскивания окна</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.1" date="2025-10-08">
+      <description>
+        <p>ImageViewer fixes:</p>
+        <ul>
+          <li>Window stays at user-chosen size when switching images</li>
+          <li>Window can be resized smaller (MIN_W 300 to 250)</li>
+          <li>Edge margin increased for easier resize</li>
+        </ul>
+      </description>
+      <description xml:lang="uz">
+        <p>ImageViewer tuzatishlari:</p>
+        <ul>
+          <li>Rasm almashtirilganda oyna o'lchami saqlanadi</li>
+          <li>Oynani kichraytirish mumkin (MIN_W 300 -> 250)</li>
+          <li>Chet zonasi kengaytirildi (oson resize uchun)</li>
+        </ul>
+      </description>
+      <description xml:lang="ru">
+        <p>Исправления просмотрщика изображений:</p>
+        <ul>
+          <li>Окно сохраняет выбранный размер при переключении изображений</li>
+          <li>Окно можно уменьшать (MIN_W 300 -> 250)</li>
+          <li>Увеличена область захвата краёв</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.0" date="2025-10-08">
       <description>
         <p>Polish and stability update:</p>
