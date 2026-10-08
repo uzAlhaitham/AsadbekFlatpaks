@@ -11,8 +11,9 @@ cleanup-commands:
 
 finish-args:
   - --share=ipc
-  - --socket=fallback-x11
-  - --socket=wayland
+  - --socket=x11
+  - --nosocket=wayland
+  - --env=QT_QPA_PLATFORM=xcb
   - --device=dri
   - --share=network
   - --filesystem=home
@@ -32,6 +33,7 @@ modules:
     build-commands:
       - install -Dm755 wallpaper-selector.sh /app/bin/wallpaper-selector.sh
       - install -Dm644 main.py /app/share/wallpaper-selector/main.py
+      - install -Dm644 main_base.py /app/share/wallpaper-selector/main_base.py
       - install -Dm644 io.github.uzAlhaitham.WallpaperSelector.desktop /app/share/applications/io.github.uzAlhaitham.WallpaperSelector.desktop
       - install -Dm644 io.github.uzAlhaitham.WallpaperSelector.metainfo.xml /app/share/metainfo/io.github.uzAlhaitham.WallpaperSelector.metainfo.xml
       - install -Dm644 icon-64.png /app/share/icons/hicolor/64x64/apps/io.github.uzAlhaitham.WallpaperSelector.png
@@ -40,7 +42,9 @@ modules:
       - install -Dm644 icon-512.png /app/share/icons/hicolor/512x512/apps/io.github.uzAlhaitham.WallpaperSelector.png
     sources:
       - type: file
-        path: main.py
+        path: ../main.py
+      - type: file
+        path: ../main_base.py
       - type: file
         path: wallpaper-selector.sh
       - type: file

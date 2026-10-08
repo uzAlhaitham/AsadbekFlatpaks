@@ -53,6 +53,23 @@ No installation required - just double-click.
 
 ## Changelog
 
+### v1.2.5 - 2025-10-08
+
+**Wayland fix — window resize now works perfectly:**
+
+- Force X11 backend in Flatpak (`QT_QPA_PLATFORM=xcb`)
+- Remove Wayland socket from sandbox permissions
+- Reliable window resize, drag, and cursor behavior
+- Image viewer opens at 90% of main window
+- Smooth synchronized window/image resize
+- Fixes all remaining Wayland/GNOME glitches
+
+### v1.2.4 - 2025-10-08
+
+- ImageViewer uses OS-managed window (QDialog + explicit flags)
+- Reliable window resize on Wayland/GNOME
+- Minimize, maximize, close buttons work correctly
+
 ### v1.2.3 - 2025-10-08
 
 **UI polish:**
