@@ -1,0 +1,52 @@
+app-id: asadbek.akasha.cv
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+base: io.atom.electron.BaseApp
+base-version: '24.08'
+command: asadbek-akasha
+separate-locales: false
+
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --filesystem=xdg-download
+  - --filesystem=xdg-config/asadbek-akasha:create
+  - --filesystem=xdg-cache/asadbek-akasha:create
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+
+modules:
+  - name: asadbek-akasha
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/share/asadbek-akasha
+      - cp -r main.js titlebar.html titlebar-preload.js package.json /app/share/asadbek-akasha/
+      - cp -r node_modules /app/share/asadbek-akasha/
+
+      - mkdir -p /app/bin
+      - |
+        cat > /app/bin/asadbek-akasha << 'INNEREOF'
+        #!/bin/sh
+        cd /app/share/asadbek-akasha
+        exec /app/share/asadbek-akasha/node_modules/electron/dist/electron . --no-sandbox "$@"
+        INNEREOF
+      - chmod +x /app/bin/asadbek-akasha
+
+      - install -Dm644 asadbek.akasha.cv.desktop
+          /app/share/applications/asadbek.akasha.cv.desktop
+
+      - install -Dm644 icon.png
+          /app/share/icons/hicolor/512x512/apps/asadbek.akasha.cv.png
+
+      - install -Dm644 asadbek.akasha.cv.metainfo.xml
+          /app/share/metainfo/asadbek.akasha.cv.metainfo.xml
+
+    sources:
+      - type: dir
+        path: ..

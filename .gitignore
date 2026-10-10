@@ -11,3 +11,11 @@ public.key
 
 # Windows build output (LFS artifact)
 WallpaperSelector-Windows/
+
+# Electron build artifacts
+node_modules/
+apps/*/node_modules/
+apps/*/build-dir/
+apps/*/repo/
+apps/*/.flatpak-builder/
+apps/*/*.flatpak

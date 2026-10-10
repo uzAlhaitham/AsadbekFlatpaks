@@ -1,0 +1,50 @@
+{
+  "name": "asadbek.akasha.cv",
+  "productName": "Asadbek's Akasha System",
+  "version": "1.0.0",
+  "description": "Asadbek's personal Akasha System desktop client",
+  "main": "main.js",
+  "author": "uzAlhaitham <https://github.com/uzAlhaitham>",
+  "license": "MIT",
+  "homepage": "https://github.com/uzAlhaitham/AsadbekFlatpaks",
+  "scripts": {
+    "start": "electron . --no-sandbox --disable-gpu-sandbox",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "dist:all": "electron-builder --linux --win"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "asadbek.akasha.cv",
+    "productName": "Asadbek's Akasha System",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "titlebar.html",
+      "titlebar-preload.js",
+      "package.json"
+    ],
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Utility",
+      "icon": "build/icon.png"
+    },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Asadbek's Akasha System"
+    }
+  }
+}

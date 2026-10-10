@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Asadbek's Akasha System
+Comment=Akasha System desktop client
+Exec=asadbek-akasha %U
+Terminal=false
+Type=Application
+Icon=asadbek.akasha.cv
+StartupWMClass=asadbek.akasha.cv
+Categories=Utility;Network;
+Keywords=akasha;genshin;leaderboard;

@@ -1,0 +1,13 @@
+name: Asadbek's Akasha System
+package: asadbek.akasha.cv
+version: 1.0.0
+version_code: 2026101001
+release_tag: akasha-system-v1.0.0
+description: |
+  Akasha System desktop client for akasha.cv.
+  Genshin Impact leaderboard and profile viewer.
+  Features: Discord/Patreon login inside app, ad blocker,
+  custom titlebar, download manager.
+upstream: https://github.com/uzAlhaitham/AsadbekFlatpaks
+license: MIT
+author: Asadbek

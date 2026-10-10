@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>asadbek.akasha.cv</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Asadbek's Akasha System</name>
+  <summary>Akasha System desktop client</summary>
+  <description>
+    <p>Akasha System desktop client for akasha.cv.</p>
+    <p>Xususiyatlar:</p>
+    <ul>
+      <li>Akasha.cv sayti ilova ichida</li>
+      <li>Discord, Patreon login — ilova ichida</li>
+      <li>Reklama bloklagich</li>
+      <li>Custom titlebar</li>
+      <li>Yuklab olish menejeri</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">asadbek.akasha.cv.desktop</launchable>
+  <url type="homepage">https://github.com/uzAlhaitham/AsadbekFlatpaks</url>
+  <url type="bugtracker">https://github.com/uzAlhaitham/AsadbekFlatpaks/issues</url>
+  <developer_name>uzAlhaitham</developer_name>
+  <content_rating type="oars-1.0"/>
+  <releases>
+    <release version="1.0.0" date="2025-10-10">
+      <description><p>Birinchi versiya</p></description>
+    </release>
+  </releases>
+</component>

@@ -6,6 +6,7 @@ Shaxsiy Flatpak repozitoriyasi.
 
 | App | Package | Platform | Description |
 |-----|---------|----------|-------------|
+| **Akasha System** | `asadbek.akasha.cv` | Linux + Windows | Akasha.cv desktop client (Genshin Impact leaderboard viewer) |
 | **DesignCraft** | `ai.storyteller.designcraft` | Linux | Graphic design tool |
 | **EffectCraft** | `ai.storyteller.effectcraft` | Linux | Visual effects tool |
 | **FilmCraft** | `ai.storyteller.filmcraft` | Linux | Video editing tool |
