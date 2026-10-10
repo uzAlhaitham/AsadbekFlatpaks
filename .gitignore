@@ -19,3 +19,6 @@ apps/*/build-dir/
 apps/*/repo/
 apps/*/.flatpak-builder/
 apps/*/*.flatpak
+
+# electron-builder output
+apps/akasha-system/dist/
