@@ -134,7 +134,11 @@ const AD_HIDE_CSS = `
   }
 `;
 
+// Flatpak uchun to'g'ri GPU sozlamalar (Electron2.BaseApp uchun)
 app.commandLine.appendSwitch('ignore-gpu-blocklist');
+app.commandLine.appendSwitch('enable-gpu-rasterization');
+app.commandLine.appendSwitch('enable-features', 'UseOzonePlatform');
+app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
 app.commandLine.appendSwitch('enable-gpu-rasterization');
 app.commandLine.appendSwitch('enable-zero-copy');
 app.commandLine.appendSwitch('enable-features',

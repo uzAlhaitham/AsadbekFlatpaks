@@ -2,7 +2,7 @@ app-id: asadbek.akasha.cv
 runtime: org.freedesktop.Platform
 runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
-base: io.atom.electron.BaseApp
+base: org.electronjs.Electron2.BaseApp
 base-version: '24.08'
 command: asadbek-akasha
 separate-locales: false
@@ -49,4 +49,4 @@ modules:
 
     sources:
       - type: dir
-        path: ..
+        path: .
