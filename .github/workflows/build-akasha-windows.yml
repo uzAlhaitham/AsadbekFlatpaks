@@ -4,9 +4,12 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'apps/akasha-system/**'
-      - '.github/workflows/build-akasha-windows.yml'
+      - 'apps/akasha-system/main.js'
+      - 'apps/akasha-system/package.json'
+      - 'apps/akasha-system/titlebar.html'
+      - 'apps/akasha-system/titlebar-preload.js'
   workflow_dispatch:
+
 
 jobs:
   build-windows:
@@ -44,5 +47,4 @@ jobs:
           files: |
             apps/akasha-system/dist/*.exe
           fail_on_unmatched_files: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          overwrite_files: true
